@@ -10,5 +10,7 @@ class Tag extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'tag';
     protected $guarded = ['id'];
+
 }

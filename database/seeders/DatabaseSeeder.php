@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\StatusSeeder;
 use Database\Seeders\LanguageSeeder;
+use App\Models\Master\Tag;
+use Database\Factories\TagFactory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +23,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        Tag::factory(10)->create();
 
         // seeder
         $this->call(StatusSeeder::class);

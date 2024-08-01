@@ -20,7 +20,7 @@ class UserTest extends TestCase
 
     /**
      * A basic unit test example.
-     */
+    */
 
     public function setUp(): void{
         parent::setUp();
@@ -45,6 +45,9 @@ class UserTest extends TestCase
         // dump(DB::getName());
 
         $this->assertEquals(count($db), 3);
+
+        $anime = Anime::first()->status->exists();
+        $this->assertTrue($anime);
     }
 
 }
