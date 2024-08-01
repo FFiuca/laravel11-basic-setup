@@ -1,12 +1,13 @@
 <?php
 
-namespace Database\Factories\Master;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Master\Tag;
 
-// class factory must be same structure with related model
-class TagFactory extends Factory
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
+ */
+class CommentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,7 +17,7 @@ class TagFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->word()
+            //
         ];
     }
 }
