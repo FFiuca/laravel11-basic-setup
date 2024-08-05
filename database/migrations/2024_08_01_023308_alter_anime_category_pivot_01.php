@@ -15,16 +15,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table((new AnimeCategoryPivot())->getTable(), function(Blueprint $table){
-            DB::beginTransaction();
-
-            if(Schema::hasIndex((new Category())->getTable(), ['category_id']))
+            // DB::beginTransaction();
+            if(Schema::hasIndex((new AnimeCategoryPivot())->getTable(), ['category_id']))
                 $table->dropForeignIdFor(Category::class);
 
             $table->unsignedBigInteger('category_id')->nullable()->change();
 
             $table->foreign('category_id')->references('id')->on((new Category())->getTable())->constrained()->onDelete('set null')->onUpdate('cascade');
 
-            DB::commit();
+            // DB::commit();
         });
     }
 
@@ -35,7 +34,7 @@ return new class extends Migration
     {
         Schema::table((new AnimeCategoryPivot())->getTable(), function(Blueprint $table){
             $table->dropForeignIdFor(Category::class);
-
+            // dump('cok');
             $table->foreignIdFor(Category::class)->constrained()->onDelete('cascade')->onUpdate('cascade');
         });
     }

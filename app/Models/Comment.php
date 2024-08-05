@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
@@ -17,5 +18,9 @@ class Comment extends Model
     // rel
     function user(){
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    function episode(): BelongsTo{
+        return $this->belongsTo(Episode::class,'episode_id','id');
     }
 }

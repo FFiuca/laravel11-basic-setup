@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::beginTransaction();
+        // DB::beginTransaction();
 
         $animeCategories = [
             ['name' => 'Action'],
@@ -71,7 +71,7 @@ class CategorySeeder extends Seeder
 
         Category::insert($animeCategories);
 
-        DB::commit();
+        // DB::commit();
     }
 
 }

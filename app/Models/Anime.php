@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\Master\Category;
 use App\Models\Episode;
 use App\Models\Master\Status;
@@ -18,8 +19,13 @@ use App\Models\AnimeArtistPivot;
 use App\Models\AnimeCategoryPivot;
 use App\Models\AnimeAuthorPivot;
 use App\Models\AnimeLanguage;
+use App\Models\Mentioned;
 
+use App\Observers\AnimeObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+// syntax yang langsung pake facecade DB tidak akan ditangkap oleh observer
+#[ObservedBy([AnimeObserver::class])]
 class Anime extends Model
 {
     use HasFactory, SoftDeletes;
@@ -54,6 +60,10 @@ class Anime extends Model
 
     public function language() : BelongsToMany{
         return $this->belongsToMany(Language::class, AnimeLanguage::class, 'anime_id', 'language_id');
+    }
+
+    public function mentioned(): HasOne{
+        return $this->hasOne(Mentioned::class, 'anime_id', 'id');
     }
 
 

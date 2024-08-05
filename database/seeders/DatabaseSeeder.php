@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Master\Category;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
         // seeder
         $this->call(StatusSeeder::class);
         $this->call(LanguageSeeder::class);
+        $this->call(CategorySeeder::class);
 
     }
 }
