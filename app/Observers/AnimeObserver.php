@@ -24,6 +24,11 @@ class AnimeObserver implements ShouldHandleEventsAfterCommit
     {
         dump('updated', $anime->id);
         Log::debug('updated', [$anime->id]);
+
+        if($anime->status_id==2){
+            // new anime airing
+            // stuff to do
+        }
     }
 
     /**

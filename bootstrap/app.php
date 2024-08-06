@@ -14,6 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
     })
+    ->withEvents([
+        '/../app/Events'
+    ])
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();

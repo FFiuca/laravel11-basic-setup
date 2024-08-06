@@ -1,6 +1,7 @@
 <?php
 namespace App\Functions\Anime;
 
+use App\Events\NewAnimeAiringEvent;
 use App\Functions\CRUDAbs;
 use Illuminate\Support\Str;
 use App\Models\Anime;
@@ -8,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Comment;
 use App\Models\Mentioned;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redis;
 
 class AnimeBase extends CRUDAbs{
 
@@ -193,6 +195,20 @@ class AnimeBase extends CRUDAbs{
         DB::commit();
 
         return ['status'=> true,'data'=> null];
+    }
+
+    public function animeAiring($id){
+        $anime = Anime::find($id);
+
+        DB::beginTransaction();
+
+        $anime->status_id = 2;
+        $anime->save();
+
+        DB::commit();
+        Redis::set('take', 'test');
+        event(new NewAnimeAiringEvent($anime));
+        return ['status'=> true];
     }
 
 

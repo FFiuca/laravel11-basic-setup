@@ -60,4 +60,11 @@ class AnimeUnitTest extends TestCase
         $this->assertTrue($do['status']);
         dump(self::$anime->id);
     }
+
+    public function test_anime_airing(){
+        $do = (new AnimeBase)->animeAiring(static::$anime->id);
+
+        $this->assertTrue($do['status']);
+        dump(self::$anime->id);
+    }
 }
