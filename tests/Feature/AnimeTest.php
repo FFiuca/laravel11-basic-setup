@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
 use App\Models\Anime;
+use Mockery;
+use App\Functions\Anime\AnimeBase;
 
 class AnimeTest extends TestCase
 {

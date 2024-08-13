@@ -211,6 +211,10 @@ class AnimeBase extends CRUDAbs{
         return ['status'=> true];
     }
 
+    public function mockTest($val){
+        return [];
+    }
+
 
 }
 
